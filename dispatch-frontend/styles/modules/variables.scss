@@ -1,0 +1,27 @@
+/*fonts*/
+
+@font-face {
+  font-family: "helvetica-regular";
+  src: url("../public/fonts/helvetica/helvetica-regular.ttf");
+}
+
+@font-face {
+  font-family: "futura-medium";
+  src: url("../public/fonts/futura/futura-medium-bt.ttf");
+}
+
+@font-face {
+  font-family: "BRHendrix-medium";
+  src: url("../public/fonts/br-hendrix/BRHendrix-Medium.otf");
+}
+
+/*colors*/
+
+$freelanceColor: #f4443c;
+$freelanceColorLight: #ff5f57;
+$pink: #ffb7b7;
+$pinkLight: #ffe6e6;
+$clientColor: #2596be;
+$white: #ffffff;
+$black: #000000;
+$blackLight : #4a4a4a
