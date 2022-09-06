@@ -1,7 +1,7 @@
 const { ClientProfil } = require("../../database/sequelize");
 const bcrypt = require("bcrypt");
 const validator = require("email-validator");
-
+const jwt = require("jsonwebtoken");
 const { ValidationError, UniqueConstraintError } = require("sequelize");
 const responseBuilder = require("../../functions-controles/response-builders");
 const errorsMessage = require("../../functions-controles/errors-variables");
@@ -71,7 +71,7 @@ exports.signup = (req, res, next) => {
   });
 };
 
-//connexion freelance
+//connexion client
 
 exports.login = (req, res, next) => {
   //vérification du champs vide de l'adresse mail et du mdp
@@ -111,12 +111,20 @@ exports.login = (req, res, next) => {
               )
             );
         }
+        const token = jwt.sign(
+          // création d'un token d'authentification
+          { userId: client.id },
+          `CUSTOM_PRIVATE_KEY`,
+          {
+            expiresIn: "24h",
+          }
+        );
         return res
           .status(200)
           .json(
             responseBuilder.buildValidresponse(
               validMessages.connectClient.message,
-              client
+              { client, token }
             )
           );
       });
@@ -133,6 +141,16 @@ exports.login = (req, res, next) => {
 exports.deleteClient = (req, res, next) => {
   const id = req.params.id;
   ClientProfil.findOne({ where: { id: id } }).then((client) => {
+       if (!client) {
+         return res
+           .status(404)
+           .json(
+             responseBuilder.buildErrorResponse(
+               errorsMessage.clientNotFound.code,
+               errorsMessage.clientNotFound.message
+             )
+           );
+       }
     client.destroy().then(() => {
       return res
         .status(200)

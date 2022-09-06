@@ -30,13 +30,19 @@ exports.emailNotFound = {
 
 exports.freelanceNotFound = {
     code: "4041",
-    message : "Le freelance dont on veut modifier les données n'existe pas dans la base de données"
+    message : "Le freelance dont on veut modifier ou supprimer les données n'existe pas dans la base de données"
 }
 
 exports.experienceNotFound = {
   code: "4042",
-  message : "L'expérience dont on veut modifier les données n'existe pas dans la BDD."
+  message : "L'expérience dont on veut modifier ou supprimer les données n'existe pas dans la BDD."
 }
+
+exports.clientNotFound = {
+  code: "4043",
+  message:
+    "Le client dont on veut modifier ou supprimer les données n'existe pas dans la base de données",
+};
 
 //erreurs 500
 exports.internalServerError = {
