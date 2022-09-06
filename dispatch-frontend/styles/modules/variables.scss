@@ -1,3 +1,23 @@
+/*général*/
+
+html,
+body,
+::after,
+::before {
+  padding: 0;
+  margin: 0;
+}
+
+a,
+li {
+  color: inherit !important;
+  text-decoration: none !important;
+  list-style-type: none !important;
+}
+
+* {
+  box-sizing: border-box;
+}
 /*fonts*/
 
 @font-face {
@@ -20,8 +40,25 @@
 $freelanceColor: #f4443c;
 $freelanceColorLight: #ff5f57;
 $pink: #ffb7b7;
-$pinkLight: #ffe6e6;
+$pinkLight: #ffe9e9;
 $clientColor: #2596be;
+$clientColorLight: #bee5fd;
 $white: #ffffff;
 $black: #000000;
-$blackLight : #4a4a4a
+$blackLight: #4a4a4a;
+
+.white {
+  color: $white;
+}
+
+.bg-clientColorLight {
+  background: $clientColorLight;
+}
+
+.bg-freelanceColorLight {
+  background: $freelanceColorLight;
+}
+
+.bg-pink-link {
+  background-color: $pinkLight;
+}

@@ -1,3 +1,21 @@
-.accueil-page {
- 
+.home-page {
+  .home-page-header {
+    min-height: 400px;
+
+    div {
+      max-width: 800px;
+    }
+    button {
+      width: 200px;
+    }
+    button:first-child:hover {
+      background: $freelanceColor;
+      color: $white;
+    }
+
+    button:last-child:hover {
+      background: $clientColor;
+      color: $white;
+    }
+  }
 }

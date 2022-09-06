@@ -18,11 +18,13 @@ export default function PrincipalNavvar() {
         <div className="left-navbar-container">
           <div className="logo-container">
             <Image src={SimpleLogo} width={100} height={100} />
-            <p>Dispatch</p>
+            <span className="mb-0 white">Dispatch</span>
           </div>
           <div>
             <Link href="/">
-              <a href="">Contactez-nous</a>
+              <a href="">
+                <span className="white">Contactez-nous</span>
+              </a>
             </Link>
           </div>
         </div>
@@ -40,13 +42,17 @@ export default function PrincipalNavvar() {
           {navActive ? <hr /> : ""}
           <li>
             <Link href="/">
-              <a href="">S'inscrire</a>
+              <a href="">
+                <span className="white">S'inscrire</span>
+              </a>
             </Link>
           </li>
           {navActive ? <hr /> : ""}
           <li>
             <Link href="/">
-              <a href="">Se connecter</a>
+              <a href="">
+                <span className="white">Se connecter</span>
+              </a>
             </Link>
           </li>
         </ul>

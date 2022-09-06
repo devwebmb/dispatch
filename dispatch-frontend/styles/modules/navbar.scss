@@ -1,14 +1,13 @@
 .principal-navbar {
   background: $pink;
   nav {
-    height: 150px;
+    height: 120px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-size: 1.5rem;
     font-family: "helvetica-regular";
     color: $blackLight;
-    max-width: 1500px;
     margin: auto;
 
     ul hr {
@@ -51,7 +50,7 @@
     div {
       width: 60px;
       height: 6px;
-      background: $blackLight;
+      background: $white;
       border-radius: 2px;
       transition: all 0.3s;
     }

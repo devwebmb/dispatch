@@ -1,3 +1,24 @@
+@charset "UTF-8";
+/*général*/
+html,
+body,
+::after,
+::before {
+  padding: 0;
+  margin: 0;
+}
+
+a,
+li {
+  color: inherit !important;
+  text-decoration: none !important;
+  list-style-type: none !important;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 /*fonts*/
 @font-face {
   font-family: "helvetica-regular";
@@ -12,18 +33,33 @@
   src: url("../public/fonts/br-hendrix/BRHendrix-Medium.otf");
 }
 /*colors*/
+.white {
+  color: #ffffff;
+}
+
+.bg-clientColorLight {
+  background: #bee5fd;
+}
+
+.bg-freelanceColorLight {
+  background: #ff5f57;
+}
+
+.bg-pink-link {
+  background-color: #ffe9e9;
+}
+
 .principal-navbar {
   background: #ffb7b7;
 }
 .principal-navbar nav {
-  height: 150px;
+  height: 120px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   font-size: 1.5rem;
   font-family: "helvetica-regular";
   color: #4a4a4a;
-  max-width: 1500px;
   margin: auto;
 }
 .principal-navbar nav ul hr {
@@ -67,7 +103,7 @@
 .principal-navbar .bars-solid div {
   width: 60px;
   height: 6px;
-  background: #4a4a4a;
+  background: #ffffff;
   border-radius: 2px;
   transition: all 0.3s;
 }
@@ -168,6 +204,23 @@
   100% {
     transform: translateY(0) rotateZ(0);
   }
+}
+.home-page .home-page-header {
+  min-height: 400px;
+}
+.home-page .home-page-header div {
+  max-width: 800px;
+}
+.home-page .home-page-header button {
+  width: 200px;
+}
+.home-page .home-page-header button:first-child:hover {
+  background: #f4443c;
+  color: #ffffff;
+}
+.home-page .home-page-header button:last-child:hover {
+  background: #2596be;
+  color: #ffffff;
 }
 
 /*# sourceMappingURL=style.css.map */
