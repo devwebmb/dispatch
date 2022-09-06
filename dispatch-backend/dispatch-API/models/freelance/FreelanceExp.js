@@ -7,10 +7,20 @@ module.exports = (sequelize, Datatypes) => {
     expTitle: {
       type: Datatypes.STRING,
       allowNull: false,
+      validate: {
+        notNull: {
+          msg: "Veuillez entrer un titre à votre expérience",
+        },
+      },
     },
     expContent: {
       type: Datatypes.STRING,
       allowNull: false,
+      validate: {
+        notNull: {
+          msg: "Veuillez entrer un titre à votre expérience",
+        },
+      },
     },
   });
 };

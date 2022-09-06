@@ -14,10 +14,6 @@ router.post("/freelance/freelanceExp", freelanceCtrl.addFreelanceExp);
 
 //delete
 router.delete("/freelance/freelanceExp/:id", freelanceCtrl.deleteFreelanceExp);
-router.delete(
-  "/freelance/allFreelanceExp/:id",
-  freelanceCtrl.deleteAllFreelanceExp
-);
 router.delete("/freelance/:id", freelanceCtrl.deleteFreelance);
 
 //update

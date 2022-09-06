@@ -7,6 +7,7 @@ const { ValidationError, UniqueConstraintError } = require("sequelize");
 const responseBuilder = require("../../functions-controles/response-builders");
 const errorsMessage = require("../../functions-controles/errors-variables");
 const validMessages = require("../../functions-controles/valid-variables");
+const jwt = require("jsonwebtoken");
 
 //inscription connexion
 
@@ -64,7 +65,7 @@ exports.signup = (req, res, next) => {
                 errorsMessage.emailNotAvailable.code,
                 errorsMessage.emailNotAvailable.message
               )
-            ); 
+            );
         }
         return res
           .status(500)
@@ -119,12 +120,20 @@ exports.login = (req, res, next) => {
               )
             );
         }
+        const token = jwt.sign(
+          // création d'un token d'authentification
+          { userId: freelance.id },
+          `CUSTOM_PRIVATE_KEY`,
+          {
+            expiresIn: "24h",
+          }
+        );
         return res
           .status(200)
           .json(
             responseBuilder.buildValidresponse(
               validMessages.connectFreelance.message,
-              freelance
+              { token, freelance }
             )
           );
       });
@@ -141,8 +150,21 @@ exports.login = (req, res, next) => {
 exports.deleteFreelance = (req, res, next) => {
   const id = req.params.id;
   FreelanceData.findOne({ where: { id: id } }).then((freelance) => {
+    if (!freelance) {
+      return res
+        .status(404)
+        .json(
+          responseBuilder.buildErrorResponse(
+            errorsMessage.freelanceNotFound.code,
+            errorsMessage.freelanceNotFound.message
+          )
+        );
+    }
     freelance
       .destroy()
+      .then(() => {
+        FreelanceExp.destroy({ where: { freelanceId: id } });
+      })
       .then(() => {
         FreelanceExp.destroy({ where: { freelanceId: id } });
       })
@@ -189,7 +211,6 @@ exports.updateProfilData = (req, res, next) => {
         FreelanceData.update(
           {
             email,
-            // freelanceId,
             pseudo,
             lastname,
             firstname,
@@ -299,6 +320,9 @@ exports.addFreelanceExp = (req, res, next) => {
         );
     })
     .catch((error) => {
+      if (error instanceof ValidationError) {
+        return res.status(400).json({ message: error.message, error }); // remontée des erreurs avec sequelize
+      }
       const message =
         "L'ajout du profil a échoué, veuillez réessayer dans quelques instants.";
       return res.status(500).json({ message, data: error });
@@ -308,6 +332,7 @@ exports.addFreelanceExp = (req, res, next) => {
 //Modification d'une expérience de frelance
 
 exports.updateFreelanceExp = (req, res, next) => {
+  expTitle: sting;
   const { expContent, expTitle } = req.body;
   const freelanceId = parseInt(req.params.id);
   FreelanceExp.findOne({ where: { freelanceId: freelanceId } })
@@ -339,22 +364,32 @@ exports.updateFreelanceExp = (req, res, next) => {
         })
         .catch((error) => {
           const message =
-            "L'ajout du profil a échoué, veuillez réessayer dans quelques instants.";
+            "La modification a échoué, veuillez réessayer dans quelques instants.";
           return res.status(500).json({ message, data: error });
         });
     })
     .catch((error) => {
       const message =
-        "L'ajout du profil a échoué, veuillez réessayer dans quelques instants.";
+        "La modification a échoué, veuillez réessayer dans quelques instants.";
       return res.status(500).json({ message, data: error });
     });
 };
 
-//suppression d'une expérience de frelance
+//suppression d'une expérience de freelance
 
 exports.deleteFreelanceExp = (req, res, next) => {
   const id = parseInt(req.params.id);
   FreelanceExp.findByPk(id).then((exp) => {
+    if (!exp) {
+      return res
+        .status(404)
+        .json(
+          responseBuilder.buildErrorResponse(
+            errorsMessage.experienceNotFound.code,
+            errorsMessage.experienceNotFound.message
+          )
+        );
+    }
     exp
       .destroy()
       .then(() => {
@@ -374,18 +409,4 @@ exports.deleteFreelanceExp = (req, res, next) => {
   });
 };
 
-//suppression de toutes les expériences d'un freelance
 
-exports.deleteAllFreelanceExp = (req, res, next) => {
-  const id = parseInt(req.params.id);
-  FreelanceExp.destroy({ where: { freelanceId: id } })
-    .then(() => {
-      const message = "Tous les profils ont été supprimés";
-      return res.status(200).json({ message });
-    })
-    .catch((error) => {
-      const message =
-        "La suppression du profil a échoué, veuillez réessayer dans quelques instants.";
-      return res.status(500).json({ message, data: error });
-    });
-};

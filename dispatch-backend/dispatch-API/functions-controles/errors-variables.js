@@ -33,6 +33,11 @@ exports.freelanceNotFound = {
     message : "Le freelance dont on veut modifier les données n'existe pas dans la base de données"
 }
 
+exports.experienceNotFound = {
+  code: "4042",
+  message : "L'expérience dont on veut modifier les données n'existe pas dans la BDD."
+}
+
 //erreurs 500
 exports.internalServerError = {
   code: "5000",
