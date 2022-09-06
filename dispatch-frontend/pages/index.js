@@ -25,15 +25,15 @@ export default function Home() {
           </Link>
         </div>
       </div>
-
       <div className="home-page-selection">
         <div className="col-12 bg-pink-link">
-          <div className="col-10 mx-auto d-flex flex-column flex-xl-row">
-            <div className="col-6 p-5">
+          <div className="col-sm-10 mx-auto d-flex flex-column flex-xl-row">
+            
+            <div className="col-xl-6 p-5 ">
               <h3 className="text-center mb-5">
                 Une sélection adaptée de freelances pour votre projet
               </h3>
-              <h5 className="mb-4">Gagnez du temps facilement</h5>
+              <h5 className="mb-4 ps-5">Gagnez du temps facilement</h5>
               <p>
                 Dispatch vous offre un accès soigneusement préparé de Freelance.
                 Vous ne recevrez que des réponses pertinentes pour vos votre
@@ -63,8 +63,8 @@ export default function Home() {
               </p>
             </div>
             <div
-              className="col-6 p-5 d-flex
-            align-items-center "
+              className="col-xl-6 p-5 pt-0 pt-xl-5 d-flex
+            align-items-center justify-content-center"
             >
               <Image src={selectionImage} ></Image>
             </div>
