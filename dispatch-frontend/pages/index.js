@@ -13,12 +13,12 @@ export default function Home() {
           Trouvez votre freelance ou inscrivez vous facilement sur Dispatch
         </p>
         <div className="d-flex flex-column flex-sm-row align-items-center justify-content-sm-between col-10 col-md-8 col-lg-4 col-7  mx-auto my-5">
-          <Link href="/addFreelanceProfil">
+          <Link href="/freelance/signup">
             <button className="btn bg-freelanceColorLight  white fs-4 mb-4 mb-sm-0">
               Je suis freelance
             </button>
           </Link>
-          <Link href="/addClientProfil">
+          <Link href="/projects/add-project">
             <button className="btn bg-clientColorLight white fs-4">
               Je suis client
             </button>
