@@ -332,7 +332,6 @@ exports.addFreelanceExp = (req, res, next) => {
 //Modification d'une expérience de frelance
 
 exports.updateFreelanceExp = (req, res, next) => {
-  expTitle: sting;
   const { expContent, expTitle } = req.body;
   const freelanceId = parseInt(req.params.id);
   FreelanceExp.findOne({ where: { freelanceId: freelanceId } })
