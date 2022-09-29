@@ -2,9 +2,23 @@ import { React, useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import SimpleLogo from "../../public/images/logo-simple-dispatch.png";
+import { useSelector, useDispatch } from "react-redux";
+import { deconnexion } from "../../feature/connexionStatusSlice";
+import { deleteFreelanceData } from "../../feature/freelanceSlice";
+import { useRouter } from "next/router";
 
 export default function PrincipalNavvar() {
   const [navActive, setNavActive] = useState(null);
+  const isConnected = useSelector((state) => state.isConnected.value);
+  const dispatch = useDispatch();
+  const router = useRouter();
+
+  const disconnect = (e) => {
+    e.preventDefault();
+    dispatch(deconnexion());
+    dispatch(deleteFreelanceData());
+    router.push("/");
+  };
 
   useEffect(() => {
     window.addEventListener("resize", () => {
@@ -40,21 +54,33 @@ export default function PrincipalNavvar() {
         </div>
         <ul className={`${navActive ? "active" : ""} ul-style`}>
           {navActive ? <hr /> : ""}
-          <li>
-            <Link href="/">
-              <a href="">
-                <span className="white">S'inscrire</span>
-              </a>
-            </Link>
-          </li>
+          {!isConnected && (
+            <li>
+              <Link href="/">
+                <a href="">
+                  <span className="white">S'inscrire</span>
+                </a>
+              </Link>
+            </li>
+          )}
           {navActive ? <hr /> : ""}
-          <li>
-            <Link href="/">
-              <a href="">
-                <span className="white">Se connecter</span>
-              </a>
-            </Link>
-          </li>
+          {isConnected ? (
+            <li>
+              <Link href="/">
+                <a onClick={disconnect}>
+                  <span className="white">Se déconnecter</span>
+                </a>
+              </Link>
+            </li>
+          ) : (
+            <li>
+              <Link href="/">
+                <a href="">
+                  <span className="white">Se connecter</span>
+                </a>
+              </Link>
+            </li>
+          )}
         </ul>
       </nav>
     </div>
