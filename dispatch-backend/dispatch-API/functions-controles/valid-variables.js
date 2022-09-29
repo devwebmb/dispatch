@@ -17,8 +17,7 @@ exports.deleteFreelance = {
     "Le freelance, son profil et ses expériences ont été supprimés de la base de données",
 };
 exports.deleteClient = {
-  message:
-    "Le client a été supprimé supprimé de la base de données",
+  message: "Le client a été supprimé supprimé de la base de données",
 };
 
 exports.addFreelanceProfilData = {
@@ -45,5 +44,13 @@ exports.updateFreelanceExp = {
 };
 
 exports.deleteFreelanceExp = {
-  message: "L'expérience du freelance a été supprimée de la base de données"
-}
+  message: "L'expérience du freelance a été supprimée de la base de données",
+};
+
+exports.getAllfreelances = {
+  message: "Voici les données de tous les freelance",
+};
+
+exports.getOneFreelance = {
+  message: "Voici les données du freelance",
+};

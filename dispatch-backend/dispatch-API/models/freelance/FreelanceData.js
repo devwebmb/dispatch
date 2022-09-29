@@ -14,11 +14,7 @@ module.exports = (sequelize, Datatypes) => {
     profilImgUrl: {
       type: Datatypes.STRING,
     },
-    pseudo: {
-      type: Datatypes.STRING,
-      unique: true,
-      allowNull: false,
-    },
+
     lastname: {
       type: Datatypes.STRING,
       allowNull: false,
@@ -26,6 +22,10 @@ module.exports = (sequelize, Datatypes) => {
     firstname: {
       type: Datatypes.STRING,
       allowNull: false,
+    },
+    birthdate: {
+      type: Datatypes.STRING,
+      allowNull:false
     },
     societyName: {
       type: Datatypes.STRING,

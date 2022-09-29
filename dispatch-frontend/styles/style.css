@@ -33,6 +33,14 @@ li {
   src: url("../public/fonts/br-hendrix/BRHendrix-Medium.otf");
 }
 /*colors*/
+.green {
+  color: green !important;
+}
+
+.red {
+  color: red !important;
+}
+
 .white {
   color: #ffffff;
 }

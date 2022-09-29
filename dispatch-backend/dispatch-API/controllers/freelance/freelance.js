@@ -41,9 +41,9 @@ exports.signup = (req, res, next) => {
     FreelanceData.create({
       email: req.body.email,
       password: hash,
-      pseudo: "",
-      lastname: "",
-      firstname: "",
+      birthdate: req.body.birthdate,
+      lastname: req.body.lastname,
+      firstname: req.body.firstname,
       societyName: "",
     })
       .then((freelance) => {
@@ -141,7 +141,7 @@ exports.login = (req, res, next) => {
     .catch((error) => {
       const message =
         "l'utilisateur n'a pas être connecté, réessayez dans un instant";
-      res.status(500).json({ message });
+      res.status(500).json({ message, error });
     });
 };
 
@@ -180,13 +180,78 @@ exports.deleteFreelance = (req, res, next) => {
   });
 };
 
+//récupérer freelance
+
+//récupérer tous le freelances
+
+exports.getAllFreelances = (req, res, next) => {
+  FreelanceData.findAll()
+    .then((data) => {
+      return res
+        .status(200)
+        .json(
+          responseBuilder.buildValidresponse(
+            validMessages.getAllfreelances.message,
+            data
+          )
+        );
+    })
+    .catch((error) => {
+      return res
+        .status(500)
+        .json(
+          responseBuilder.buildErrorResponse(
+            errorsMessage.internalServerError.code,
+            errorsMessage.internalServerError.message,
+            { error }
+          )
+        );
+    });
+};
+
+//récupérer 1 freelance avec son id
 //Données de profil du freelance
 
+exports.getOneFreelance = (req, res, next) => {
+  const id = req.params.id;
+  FreelanceData.findOne({ where: { id: id } })
+    .then((freelance) => {
+      if (!freelance) {
+        return res
+          .status(404)
+          .json(
+            responseBuilder.buildErrorResponse(
+              errorsMessage.freelanceNotFound.code,
+              errorsMessage.freelanceNotFound.message
+            )
+          );
+      }
+      return res
+        .status(200)
+        .json(
+          responseBuilder.buildValidresponse(
+            validMessages.getOneFreelance,
+            freelance
+          )
+        );
+    })
+    .catch((error) => {
+      return res
+        .status(500)
+        .json(
+          responseBuilder.buildErrorResponse(
+            errorsMessage.internalServerError.code,
+            errorsMessage.internalServerError.message,
+            { error }
+          )
+        );
+    });
+};
 //modification et ajout des données de profil d'un freelance
 
 exports.updateProfilData = (req, res, next) => {
   const freelanceId = parseInt(req.params.id);
-  const { email, pseudo, lastname, firstname, societyName } = req.body;
+  const { email, birthdate, lastname, firstname, societyName } = req.body;
   FreelanceData.findOne({ where: { id: freelanceId } })
     .then((freelanceProfilData) => {
       if (!freelanceProfilData) {
@@ -211,7 +276,7 @@ exports.updateProfilData = (req, res, next) => {
         FreelanceData.update(
           {
             email,
-            pseudo,
+            birthdate,
             lastname,
             firstname,
             societyName,
@@ -257,7 +322,7 @@ exports.updateProfilData = (req, res, next) => {
           // s'il n'y a pas de fichier image
           {
             email: email,
-            pseudo: pseudo,
+            birtdate: birthdate,
             lastname: lastname,
             firstname: firstname,
             societyName: societyName,
@@ -407,5 +472,3 @@ exports.deleteFreelanceExp = (req, res, next) => {
       });
   });
 };
-
-

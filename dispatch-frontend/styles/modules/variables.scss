@@ -46,6 +46,16 @@ $clientColorLight: #bee5fd;
 $white: #ffffff;
 $black: #000000;
 $blackLight: #4a4a4a;
+$green: green;
+$red: red;
+
+.green {
+  color: $green !important;
+}
+
+.red {
+  color: $red !important;
+}
 
 .white {
   color: $white;

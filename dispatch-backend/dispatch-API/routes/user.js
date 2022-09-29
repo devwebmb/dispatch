@@ -12,6 +12,10 @@ router.post("/freelance/signup", freelanceCtrl.signup);
 router.post("/freelance/login", freelanceCtrl.login);
 router.post("/freelance/freelanceExp", freelanceCtrl.addFreelanceExp);
 
+//get
+router.get("/freelance", freelanceCtrl.getAllFreelances);
+router.get("/freelance/:id", freelanceCtrl.getOneFreelance)
+
 //delete
 router.delete("/freelance/freelanceExp/:id", freelanceCtrl.deleteFreelanceExp);
 router.delete("/freelance/:id", freelanceCtrl.deleteFreelance);
@@ -30,6 +34,6 @@ router.post("/client/login", clientCtrl.login);
 router.delete("/client/:id", clientCtrl.deleteClient);
 
 //update
-router.put("/client/profilData/:id", clientCtrl.updateProfilData)
+router.put("/client/profilData/:id", clientCtrl.updateProfilData);
 
 module.exports = router;
