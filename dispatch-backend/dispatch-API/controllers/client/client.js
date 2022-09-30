@@ -39,9 +39,7 @@ exports.signup = (req, res, next) => {
     ClientProfil.create({
       email: req.body.email,
       password: hash,
-      lastname: "",
-      firstname: "",
-      societyName: "",
+      societyName:req.body.societyName,
     })
       .then((client) => {
         return res
@@ -169,7 +167,7 @@ exports.deleteClient = (req, res, next) => {
 
 exports.updateProfilData = (req, res, next) => {
   const clientId = parseInt(req.params.id);
-  const { email, lastname, firstname, societyName } = req.body;
+  const { email, societyName } = req.body;
   ClientProfil.findOne({ where: { id: clientId } })
     .then((clientProfil) => {
       if (!clientProfil) {
@@ -200,8 +198,7 @@ exports.updateProfilData = (req, res, next) => {
     ClientProfil.update(
       {
         email,
-        lastname,
-        firstname,
+       
         societyName,
         profilImgUrl: `${req.protocol}://${req.get(
           "host"
@@ -241,8 +238,7 @@ exports.updateProfilData = (req, res, next) => {
       // s'il n'y a pas de fichier image
       {
         email,
-        lastname,
-        firstname,
+
         societyName,
       },
       {

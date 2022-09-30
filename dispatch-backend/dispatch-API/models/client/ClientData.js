@@ -12,12 +12,7 @@ module.exports = (sequelize, Datatypes) => {
     profilImgUrl: {
       type: Datatypes.STRING,
     },
-    lastname: {
-      type: Datatypes.STRING,
-    },
-    firstname: {
-      type: Datatypes.STRING,
-    },
+
     societyName: {
       type: Datatypes.STRING,
     },
