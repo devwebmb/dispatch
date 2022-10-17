@@ -18,4 +18,16 @@
       color: $white;
     }
   }
+
+  .principal-section-home {
+
+    .first-part {
+      background: $clientColor;
+      min-height: 300px;
+    }
+
+    .second-part {
+      min-height: 300px;
+    }
+  }
 }

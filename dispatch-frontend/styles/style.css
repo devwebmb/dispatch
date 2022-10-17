@@ -57,6 +57,11 @@ li {
   background-color: #ffe9e9;
 }
 
+/*variables générales*/
+.z-index-30 {
+  z-index: 30;
+}
+
 .principal-navbar {
   background: #ffb7b7;
 }
@@ -229,6 +234,13 @@ li {
 .home-page .home-page-header button:last-child:hover {
   background: #2596be;
   color: #ffffff;
+}
+.home-page .principal-section-home .first-part {
+  background: #2596be;
+  min-height: 300px;
+}
+.home-page .principal-section-home .second-part {
+  min-height: 300px;
 }
 
 /*# sourceMappingURL=style.css.map */

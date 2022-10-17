@@ -2,11 +2,13 @@ import PrincipalNavbar from "../components/navbar/PrincipalNavvar";
 import Image from "next/image";
 import selectionImage from "../public/images/image-1.png"
 import Link from "next/link";
+import PrincipalSectionHeader from "../components/home-components/PrincipalSectionHeader";
 
 export default function Home() {
   return (
     <div className="home-page">
-      <PrincipalNavbar />
+      <PrincipalSectionHeader />
+      {/* <PrincipalNavbar />
 
       <div className="home-page-header d-flex flex-column justify-content-center">
         <p className="text-center fs-5 col-10 mx-auto col-md-12">
@@ -70,7 +72,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
