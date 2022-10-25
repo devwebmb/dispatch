@@ -32,6 +32,10 @@ li {
   font-family: "BRHendrix-medium";
   src: url("../public/fonts/br-hendrix/BRHendrix-Medium.otf");
 }
+.helvetica-regular {
+  font-family: "helvetica-regular";
+}
+
 /*colors*/
 .green {
   color: green !important;
@@ -228,7 +232,7 @@ li {
   width: 200px;
 }
 .home-page .home-page-header button:first-child:hover {
-  background: #f4443c;
+  background: #f36b5b;
   color: #ffffff;
 }
 .home-page .home-page-header button:last-child:hover {
@@ -239,8 +243,44 @@ li {
   background: #2596be;
   min-height: 300px;
 }
+@media screen and (min-width: 1750px) {
+  .home-page .principal-section-home .first-part .blue-part-content {
+    width: 100%;
+    padding-left: 10% !important;
+    padding-bottom: 3% !important;
+  }
+}
+@media screen and (min-width: 2200px) {
+  .home-page .principal-section-home .first-part .blue-part-content {
+    width: 100%;
+    padding-left: 20% !important;
+  }
+}
+.home-page .principal-section-home .first-part .blue-part-content h3 {
+  text-align: left !important;
+  padding-left: 5% !important;
+}
 .home-page .principal-section-home .second-part {
   min-height: 300px;
+  background: #f36b5b;
+}
+.home-page .principal-section-home .second-part .red-background-position {
+  bottom: -150px;
+}
+@media screen and (min-width: 1600px) {
+  .home-page .principal-section-home .second-part .red-background-position {
+    bottom: -200px;
+  }
+}
+@media screen and (min-width: 2000px) {
+  .home-page .principal-section-home .second-part .red-background-position {
+    bottom: -300px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .home-page .principal-section-home .second-part .red-background-position {
+    bottom: -100px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

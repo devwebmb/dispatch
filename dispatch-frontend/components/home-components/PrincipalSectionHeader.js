@@ -2,15 +2,18 @@ import Image from "next/image";
 import React from "react";
 import RedBackground from "../../public/images/design-page-accueil/Fichier4.png";
 import Design from "../../public/images/design-page-accueil/Fichier1.png";
+import ProfilPhoto from "../../public/images/design-page-accueil/deagreez190500567.jpg";
 
 export default function PrincipalSectionHeader() {
   return (
     <div className="principal-section-home position-relative">
-      <div className="position-absolute end-0 z-index-30 d-none d-xl-block col-6 pe-0">
-        <Image layout="responsive" src={Design} />
+      <div className="position-absolute design end-0 z-index-30 d-none d-xl-block ">
+        <Image src={Design} height={800} />
       </div>
-      <div className="first-part col-12 ">
-        <div className="col-xl-6  p-5 white">
+
+
+      <div className="first-part col-12 d-flex">
+        <div className="col-xl-6   p-5 white helvetica-regular blue-part-content">
           <h3 className="text-center mb-5">
             Une sélection adaptée de freelances pour votre projet
           </h3>
@@ -42,20 +45,30 @@ export default function PrincipalSectionHeader() {
             disponible pour vous répondre à chaque instant.
           </p>
         </div>
-          </div>
+      </div>
 
-      <div className="second-part col-12 ">
-        <div className="">
+      <div className="second-part col-12 position-relative d-flex flex-column flex-xl-row">
+        <div className="col-12 position-absolute red-background-position">
           <Image
-            layout="responsive"
             src={RedBackground}
-            width={1949}
-            height={562}
+            width={3000}
+            height={865}
+            layout="responsive"
           />
-              </div>
-              <div className="col-xl-6">
-                  
-              </div>
+        </div>
+        <div className="col-xl-6 p-5">
+          <div className="col-8 mx-auto d-flex align-items-center ">
+            <Image src={ProfilPhoto}></Image>
+          </div>
+        </div>
+        <div className="col-xl-6 white z-index-30 d-flex align-items-end px-5 pb-xl-5">
+          <p className="col-xl-8 mx-auto helvetica-regular">
+            "Ayant connu les deux situations tels que Freelance et prestataire
+            de projet : Dispatch cherche à concilier les deux parties en offrant
+            pour le client la meilleure sélection possible selon ses propres
+            critères. "
+          </p>
+        </div>
       </div>
     </div>
   );
