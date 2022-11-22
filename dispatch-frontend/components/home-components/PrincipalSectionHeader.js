@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 import RedBackground from "../../public/images/design-page-accueil/Fichier4.png";
 import Design from "../../public/images/design-page-accueil/Fichier1.png";
-import ProfilPhoto from "../../public/images/design-page-accueil/deagreez190500567.jpg";
+import ProfilPhoto from "../../public/images/design-page-accueil/photo-thibault-merat.jpg";
 
 export default function PrincipalSectionHeader() {
   return (
