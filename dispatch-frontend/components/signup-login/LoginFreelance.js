@@ -8,7 +8,7 @@ import { useRouter } from "next/router";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { useDispatch } from "react-redux";
-import { connexion } from "../../../../MIROUART/Mirouart-front/frontend/slices/connexionStatusSlice";
+import { connexion } from "../../feature/connexionStatusSlice";
 import { setFreelanceData } from "../../feature/freelanceSlice";
 
 export default function LoginFreelance() {
